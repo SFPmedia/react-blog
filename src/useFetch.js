@@ -11,7 +11,7 @@ const useFetch = (url) => {
         fetch(url, { signal: abortCont.signal })
             .then(res => {
                 if (!res.ok) {
-                    throw Error("could not fetch the data for that ressource");
+                    throw Error("Kunne ikke finde den pågældende data");
                 }
                 return res.json();
             })
@@ -22,7 +22,7 @@ const useFetch = (url) => {
             })
             .catch(err => {
                 if (err.name === 'AbortError') {
-                    console.log("fetch aborted");
+                    console.log("fetch stoppet");
                 } else {
                     setIsLoading(false);
                     setError(err.message);
